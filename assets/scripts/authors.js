@@ -13,5 +13,22 @@ function cleanBookData(authors){
   let context = {authors};
   let html = template(context);
   $('#author-append').html(html);
-  return authors;
+  addDelete();
+}
+
+function addDelete(){
+  $('.delete-author-button').on('click',function(event){
+    let authorID = {
+      id:$(this).data('id')
+    };
+    $.ajax({
+      url: `${SERVER_URL}/authors`,
+      method: "DELETE",
+      data: authorID,
+      dataType: "json",
+      success: function() {
+          window.location.replace(`${CLIENT_URL}/authors.html`);
+    }
+    });
+  })
 }
