@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Galvanize Reads</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/stylesheets/shared.css">
+    <link rel="stylesheet" href="/assets/stylesheets/authors.css">
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand reads-logo-container" href="/">
+              <img class="reads-logo"alt="Brand" src="assets/images/galvanize-reads-logo.png">
+            </a>
+            <a class="navbar-brand logo-text" href="/">Galvanize Reads</a>
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="/">Home <span class="sr-only">(current)</span></a></li>
+              <li><a href="#">Link</a></li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+      </nav>
+    </header>
+    <main>
+      <div class="container">
+        <div class="row">
+          <div class="">
+            <a href="/newauthor.html"><button class="btn btn-primary col-xs-6 col-xs-offset-3" name="button">Add a Book</button></a>
+          </div>
+        </div>
+        <div id="author-append"class=""></div>
+      </div>
+    </main>
+    <footer>
+
+    </footer>
+  </body>
+  <script id="author-template" type="text/x-handlebars-template">
+    {{#each authors}}
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-xs-3">
+            <img class="author-card-img img-thumbnail"alt="author cover image" src="{{'Portrait URL'}}">
+          </div>
+          <div class="col-xs-9">
+            <div class="row">
+              <p class="author-card-title">{{'First Name'}}</p>
+            </div>
+            <div class="row">
+              <p class="author-card-author">{{'Last Name'}}</p>
+            </div>
+            <div class="row">
+              <p class="author-card-genre">{{'Biography'}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <button data-id={{id}} class="delete-author-button btn btn-danger col-xs-4 col-xs-offset-2" name="button">Delete</button>
+          <button data-id={{id}} class="update-author-button btn btn-warning col-xs-4" name="button">Update</button>
+        </div>
+      </div>
+    </div>
+    {{/each}}
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="/assets/scripts/shared.js"></script>
+  <script src="/assets/scripts/authors.js"></script>
+</html>
