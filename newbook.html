@@ -41,41 +41,8 @@
         <div class="col-xs-2">
           <p>Author and Book Things go Here</p>
         </div>
-        <div class="col-xs-6">
-          <form id="add-book-form" action="/" method="post">
-                <div class="form-group row">
-                    <label for="title-input" class="col-xs-2 col-form-label">Title</label>
-                    <div class="col-xs-10">
-                        <input class="form-control" name="title" type="text" id="title-input" required>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="genre-input" class="col-xs-2 col-form-label">Genre</label>
-                    <div class="col-xs-10">
-                        <input class="form-control" name="genre" type="text" id="genre-input" required>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="img-input" class="col-xs-2 col-form-label">Cover Image URL</label>
-                    <div class="col-xs-10">
-                        <input class="form-control" name="img" type="url" id="img-input" required>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="description-input" class="col-xs-2 col-form-label">Description</label>
-                    <div class="col-xs-10">
-                        <input class="form-control" name="description" type="text" id="description-input" required>
-                    </div>
-                </div>
-                <div class="form-group row">
-                  <label for="author-input">Authors</label>
-                    <select multiple class="form-control" id="author-input"name="authors" required>
-                      <option>Bonnie Test</option>
-                      <option>Anna Test</option>
-                    </select>
-                </div>
-                <button class="btn btn-primary" type="submit" name="button" id="submit-book-button">Submit</button>
-            </form>
+        <div id="append-form"class="col-xs-6">
+
         </div>
 
       </div>
@@ -88,4 +55,44 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="/assets/scripts/shared.js"></script>
   <script src="/assets/scripts/newbook.js"></script>
+  <script id="form-template" type="text/x-handlebars-template">
+    <form id="add-book-form" action="/" method="post">
+          <div class="form-group row">
+              <label for="title-input" class="col-xs-2 col-form-label">Title</label>
+              <div class="col-xs-10">
+                  <input class="form-control" name="title" type="text" id="title-input" required {{#if 'Book Title'}}value='{{'Book Title'}}'{{/if}}>
+              </div>
+          </div>
+          <div class="form-group row">
+              <label for="genre-input" class="col-xs-2 col-form-label">Genre</label>
+              <div class="col-xs-10">
+                  <input class="form-control" name="genre" type="text" id="genre-input" required {{#if 'Book Title'}}value='{{'Book Genre'}}'{{/if}}>
+              </div>
+          </div>
+          <div class="form-group row">
+              <label for="img-input" class="col-xs-2 col-form-label">Cover Image URL</label>
+              <div class="col-xs-10">
+                  <input class="form-control" name="img" type="url" id="img-input" required {{#if 'Book Title'}}value='{{'Book Cover URL'}}'{{/if}}>
+              </div>
+          </div>
+          <div class="form-group row">
+              <label for="description-input" class="col-xs-2 col-form-label">Description</label>
+              <div class="col-xs-10">
+                  <input class="form-control" name="description" type="text" id="description-input" required {{#if 'Book Title'}}value='{{'Book Description'}}'{{/if}}>
+              </div>
+          </div>
+          <div class="form-group row">
+            <label for="author-input">Authors</label>
+              <select multiple class="form-control" id="author-input"name="authors" required>
+                <option>Bonnie Test</option>
+                <option>Anna Test</option>
+              </select>
+          </div>
+          {{#if 'Book Title'}}
+          <button class="btn btn-primary" type="submit" name="button" id="update-book-button">Update</button>
+          {{else}}
+          <button class="btn btn-primary" type="submit" name="button" id="submit-book-button">Submit</button>
+          {{/if}}
+      </form>
+  </script>
 </html>

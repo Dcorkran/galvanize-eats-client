@@ -2,6 +2,7 @@ $( document ).ready(function() {
   getBooks()
     .then(cleanBookData)
     .then(deleteBook)
+    .then(updateBookButton)
 });
 
 
@@ -32,5 +33,12 @@ function deleteBook(){
           window.location.replace(`${CLIENT_URL}/books.html`);
     }
     });
+  });
+}
+
+function updateBookButton(){
+  $('.update-book-button').on('click',function(){
+    let id = $(this).data('id');
+    window.location.replace(`${CLIENT_URL}/newbook.html?id=${id}`);
   });
 }
