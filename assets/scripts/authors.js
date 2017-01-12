@@ -14,6 +14,7 @@ function cleanBookData(authors){
   let html = template(context);
   $('#author-append').html(html);
   addDelete();
+  updateAuthorButton();
 }
 
 function addDelete(){
@@ -31,4 +32,11 @@ function addDelete(){
     }
     });
   })
+}
+
+function updateAuthorButton(){
+  $('.update-author-button').on('click',function(){
+    let id = $(this).data('id');
+    window.location.replace(`${CLIENT_URL}/newauthor.html?id=${id}`);
+  });
 }
