@@ -4,6 +4,6 @@ function getServerUrl() {
     if (window.location.host.indexOf('localhost') != -1) {
         return 'http://localhost:3000';
     } else {
-        return 'poop';
+        return 'https://galvanize-reads-dc.herokuapp.com';
     }
 }
