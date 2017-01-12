@@ -1,0 +1,11 @@
+.book-card-img{
+  height: 14em;
+}
+
+.book-card-title{
+  font-weight:bold;
+}
+
+.book-card-genre{
+  font-style: italic;
+}
