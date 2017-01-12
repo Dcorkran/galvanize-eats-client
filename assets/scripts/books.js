@@ -1,8 +1,5 @@
 $( document ).ready(function() {
-  getBooks()
-    .then(cleanBookData)
-    .then(deleteBook)
-    .then(updateBookButton)
+  checkQuery();
 });
 
 
@@ -41,4 +38,18 @@ function updateBookButton(){
     let id = $(this).data('id');
     window.location.replace(`${CLIENT_URL}/newbook.html?id=${id}`);
   });
+}
+
+
+function checkQuery(){
+  if (!window.location.search){
+    getBooks()
+      .then(cleanBookData)
+      .then(deleteBook)
+      .then(updateBookButton)
+  } else {
+    let query = parseInt(window.location.search.substring(window.location.search.indexOf('=') +1,window.location.search.length));
+    return $.get(`${SERVER_URL}/books/${query}`)
+    .then(cleanBookData);
+  }
 }
