@@ -13,6 +13,6 @@ function getClientUrl() {
     if (window.location.host.indexOf('localhost') != -1) {
         return 'http://localhost:8080';
     } else {
-        return 'https://galvanize-reads.firebaseapp.com/';
+        return 'https://galvanize-reads.firebaseapp.com';
     }
 }
