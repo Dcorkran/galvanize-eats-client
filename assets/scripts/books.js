@@ -1,9 +1,7 @@
 $( document ).ready(function() {
   getBooks()
     .then(cleanBookData)
-    .then(()=>{
-      console.log('test');
-    });
+    .then(deleteBook)
 });
 
 
@@ -21,4 +19,21 @@ function cleanBookData(books){
   console.log('hello');
   $('#book-append').html(html);
   return books;
+}
+
+function deleteBook(){
+  $('.delete-book-button').on('click',function(event){
+    let bookID = {
+      id:$(this).data('id')
+    };
+    $.ajax({
+      url: `${SERVER_URL}/books`,
+      method: "DELETE",
+      data: bookID,
+      dataType: "json",
+      success: function() {
+          window.location.replace(`${CLIENT_URL}/books.html`);
+    }
+    });
+  });
 }
