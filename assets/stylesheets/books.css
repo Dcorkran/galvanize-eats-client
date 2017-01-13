@@ -5,6 +5,8 @@
 
 .book-card-title{
   font-weight:bold;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .book-card-genre{
@@ -15,4 +17,12 @@
   text-decoration: underline;
   cursor: pointer;
   color:#337AB7;
+}
+
+.pre-scrollable{
+  max-height: 6em;
+}
+
+.add-book-btn{
+  margin-bottom: 2em;
 }

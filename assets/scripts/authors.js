@@ -2,6 +2,23 @@ $( document ).ready(function() {
   checkQuery();
 });
 
+
+function checkQuery(){
+  if (!window.location.search){
+    getAuthors()
+      .then(cleanAuthorData)
+      .then(addDelete)
+      .then(updateAuthorButton)
+      .then(addBookLinks);
+  } else {
+    getOneAuthor()
+      .then(cleanAuthorData)
+      .then(addDelete)
+      .then(updateAuthorButton)
+      .then(addBookLinks);
+  }
+}
+
 function getAuthors(){
   return $.get(`${SERVER_URL}/authors`)
 }
@@ -12,8 +29,6 @@ function cleanAuthorData(authors){
   let context = {authors};
   let html = template(context);
   $('#author-append').html(html);
-  addDelete();
-  updateAuthorButton();
 }
 
 function addDelete(){
@@ -40,15 +55,14 @@ function updateAuthorButton(){
   });
 }
 
-function checkQuery(){
-  if (!window.location.search){
-    getAuthors()
-      .then(cleanAuthorData)
-      .then(addDelete)
-      .then(updateAuthorButton)
-  } else {
-    let query = parseInt(window.location.search.substring(window.location.search.indexOf('=') +1,window.location.search.length));
-    return $.get(`${SERVER_URL}/authors/${query}`)
-    .then(cleanAuthorData);
-  }
+function getOneAuthor(){
+  let query = parseInt(window.location.search.substring(window.location.search.indexOf('=') +1,window.location.search.length));
+  return $.get(`${SERVER_URL}/authors/${query}`)
+}
+
+function addBookLinks(){
+  $('.book-link').on('click',function(){
+    let id = $(this).data('id');
+    window.location.replace(`${CLIENT_URL}/books.html?id=${id}`);
+  })
 }

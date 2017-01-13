@@ -28,34 +28,26 @@
 
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="/">Home <span class="sr-only">(current)</span></a></li>
-              <li><a href="#">Link</a></li>
-            </ul>
+
           </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
       </nav>
     </header>
     <main>
-      <ul class="nav nav-tabs">
-        <li role="presentation"><a href="/">Home</a></li>
-        <li role="presentation"class="active"><a href="/books.html">Books</a></li>
-        <li role="presentation"><a href="/authors.html">Authors</a></li>
-      </ul>
       <div class="container">
         <div class="row">
-          <div class="">
-            <a href="/newbook.html"><button class="btn btn-primary col-xs-6 col-xs-offset-3" name="button">Add a Book</button></a>
-          </div>
         </div>
         <div class="row">
-          <div class="col-xs-1">
+          <div class="col-xs-2">
             <div class="list-group">
               <a href="/books.html" class="list-group-item active">Books</a>
               <a href="/authors.html" class="list-group-item">Authors</a>
             </div>
           </div>
-          <div id="book-append"class="col-xs-11"></div>
+          <div id="book-append"class="col-xs-10"></div>
+        </div>
+        <div class="">
+          <a href="/newbook.html"><button class="add-book-btn btn btn-primary col-xs-6 col-xs-offset-4" name="button">Add a Book</button></a>
         </div>
 
       </div>
@@ -78,24 +70,32 @@
           </div>
           <div class="col-xs-9">
             <div class="row">
-              <p class="book-card-title">{{'Book Title'}}</p>
+                <p class="book-card-title col-xs-1">Title:</p>
+                <p class="col-xs-6">{{'Book Title'}}</p>
+                <button data-id={{id}} type="button" class="btn btn-default btn-sm col-xs-2 update-book-button">
+                  <span class="glyphicon glyphicon-pencil"></span> Edit
+                </button>
+                <button data-id={{id}} type="button" class="btn btn-default btn-sm col-xs-2 delete-book-button">
+                  <span class="glyphicon glyphicon-trash"></span> Delete
+                </button>
+            </div>
+            <div class="row">
+              <p class="book-card-title">Authors:</p>
             </div>
             <div class="row append-authors">
-
-                {{#each author}}<p class="author-link"data-id={{author_id}}>{{'First Name'}} {{'Last Name'}}</p>{{/each}}
-
+                {{#each author}}<p class="author-link col-xs-4"data-id={{author_id}}>{{'First Name'}} {{'Last Name'}}</p>{{/each}}
             </div>
             <div class="row">
-              <p class="book-card-genre">{{'Book Genre'}}</p>
+              <p class="book-card-title col-xs-1">Genre:</p>
+              <p class="book-card-genre col-xs-6">{{'Book Genre'}}</p>
             </div>
             <div class="row">
+              <p class="book-card-title">Description:</p>
+            </div>
+            <div class="row pre-scrollable">
               <p class="book-card-description">{{'Book Description'}}</p>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <button data-id={{id}} class="delete-book-button btn btn-danger col-xs-4 col-xs-offset-2" name="button">Delete</button>
-          <button data-id={{id}} class="update-book-button btn btn-warning col-xs-4" name="button">Update</button>
         </div>
       </div>
     </div>

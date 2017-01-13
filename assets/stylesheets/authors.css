@@ -1,0 +1,19 @@
+.book-link{
+  text-decoration: underline;
+  cursor: pointer;
+  color:#337AB7;
+}
+
+.card-title{
+  font-weight: bold;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.pre-scrollable{
+  max-height: 6em;
+}
+
+.add-author-btn{
+  margin-bottom: 2em;
+}

@@ -28,10 +28,7 @@
 
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="/">Home <span class="sr-only">(current)</span></a></li>
-              <li><a href="#">Link</a></li>
-            </ul>
+
           </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
       </nav>
@@ -39,18 +36,18 @@
     <main>
       <div class="container">
         <div class="row">
-          <div class="">
-            <a href="/newauthor.html"><button class="btn btn-primary col-xs-6 col-xs-offset-3" name="button">Add an Author</button></a>
-          </div>
         </div>
         <div class="row">
-          <div class="col-xs-1">
+          <div class="col-xs-2">
             <div class="list-group">
               <a href="/books.html" class="list-group-item">Books</a>
               <a href="/authors.html" class="list-group-item active">Authors</a>
             </div>
         </div>
-        <div id="author-append"class="col-xs-11"></div>
+        <div id="author-append"class="col-xs-10"></div>
+      </div>
+      <div class="">
+        <a href="/newauthor.html"><button class="add-author-btn btn btn-primary col-xs-6 col-xs-offset-4" name="button">Add an Author</button></a>
       </div>
     </main>
     <footer>
@@ -67,19 +64,25 @@
           </div>
           <div class="col-xs-9">
             <div class="row">
-              <p class="author-card-title">{{'First Name'}}</p>
+              <p class="card-title col-xs-1">Name:</p><p class="author-card-title col-xs-6">{{'First Name'}} {{'Last Name'}}</p>
+              <button data-id={{id}} type="button" class="btn btn-default btn-sm col-xs-2 update-author-button">
+                <span class="glyphicon glyphicon-pencil"></span> Edit
+              </button>
+              <button data-id={{id}} type="button" class="btn btn-default btn-sm col-xs-2 delete-author-button">
+                <span class="glyphicon glyphicon-trash"></span> Delete
+              </button>
             </div>
             <div class="row">
-              <p class="author-card-author">{{'Last Name'}}</p>
+              <p class="card-title">Bio:</p>
+              <div class="pre-scrollable">
+                <p class="author-card-genre">{{'Biography'}}</p>
+              </div>
             </div>
-            <div class="row">
-              <p class="author-card-genre">{{'Biography'}}</p>
+            <div class="row append-authors">
+                <p class="card-title">Books:</p>
+                {{#each book}}<p class="book-link"data-id={{book_id}}>{{'Book Title'}}</p>{{/each}}
             </div>
           </div>
-        </div>
-        <div class="row">
-          <button data-id={{id}} class="delete-author-button btn btn-danger col-xs-4 col-xs-offset-2" name="button">Delete</button>
-          <button data-id={{id}} class="update-author-button btn btn-warning col-xs-4" name="button">Update</button>
         </div>
       </div>
     </div>
