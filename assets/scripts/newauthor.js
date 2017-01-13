@@ -43,7 +43,6 @@ function getBooks(){
 }
 
 function addBookInput(books){
-  console.log('yo',books);
   for (var i = 0; i < books.length; i++) {
     let $option = `<option>${books[i]['Book Title']}</option>`;
     $('#book-input').append($option);
@@ -51,7 +50,6 @@ function addBookInput(books){
 }
 
 function addAuthorFormWithData(bookData){
-  console.log(bookData);
   let source = $('#author-form-template').html();
   let template = Handlebars.compile(source);
   let context = bookData[0];

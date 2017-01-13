@@ -36,7 +36,6 @@ function addForm(){
 }
 
 function addFormWithData(bookData){
-  console.log('yoooo');
   let source = $('#form-template').html();
   let template = Handlebars.compile(source);
   let context = bookData[0];
@@ -69,7 +68,6 @@ function getAuthors(){
 }
 
 function addAuthorInput(authors){
-  console.log('yo',authors);
   for (var i = 0; i < authors.length; i++) {
     let $option = `<option>${authors[i]['First Name']} ${authors[i]['Last Name']}</option>`;
     $('#author-input').append($option);

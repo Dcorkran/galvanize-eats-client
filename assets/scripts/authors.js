@@ -25,7 +25,6 @@ function getAuthors(){
   return $.get(`${SERVER_URL}/authors`)
 }
 function cleanAuthorData(authors){
-  console.log(authors);
   let source = $('#author-template').html();
   let template = Handlebars.compile(source);
   let context = {authors};

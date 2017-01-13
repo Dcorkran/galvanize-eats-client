@@ -25,13 +25,11 @@ function getBooks(){
 }
 
 function cleanBookData(books){
-  console.log(books);
   let source = $('#book-template').html();
   let template = Handlebars.compile(source);
   let context = {books};
   let html = template(context);
   $('#book-append').html(html);
-  // console.log(books);
   return books;
 }
 
@@ -65,9 +63,6 @@ function cleanBookDataWithQuery(books){
   let context = {books};
   let html = template(context);
   $('#book-append').html(html);
-  // console.log(books);
-  // getAuthors(books)
-  // .then(addAuthors);
 }
 
 function addAuthorLinks(){
