@@ -1,12 +1,13 @@
 $( document ).ready(function() {
-  getAuthors()
-  .then(cleanBookData);
+  checkQuery();
+  // getAuthors()
+  // .then(cleanAuthorData);
 });
 
 function getAuthors(){
   return $.get(`${SERVER_URL}/authors`)
 }
-function cleanBookData(authors){
+function cleanAuthorData(authors){
   console.log(authors);
   let source = $('#author-template').html();
   let template = Handlebars.compile(source);
@@ -39,4 +40,17 @@ function updateAuthorButton(){
     let id = $(this).data('id');
     window.location.replace(`${CLIENT_URL}/newauthor.html?id=${id}`);
   });
+}
+
+function checkQuery(){
+  if (!window.location.search){
+    getAuthors()
+      .then(cleanAuthorData)
+      .then(addDelete)
+      .then(updateAuthorButton)
+  } else {
+    let query = parseInt(window.location.search.substring(window.location.search.indexOf('=') +1,window.location.search.length));
+    return $.get(`${SERVER_URL}/authors/${query}`)
+    .then(cleanAuthorData);
+  }
 }

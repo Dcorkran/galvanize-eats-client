@@ -2,17 +2,34 @@ $( document ).ready(function() {
   checkQuery();
 });
 
+function checkQuery(){
+  if (!window.location.search){
+    getBooks()
+      .then(cleanBookData)
+      .then(deleteBook)
+      .then(updateBookButton)
+      .then(addAuthorLinks);
+  } else {
+    getOneBook()
+      .then(cleanBookDataWithQuery)
+      .then(deleteBook)
+      .then(updateBookButton)
+      .then(addAuthorLinks);
+  }
+}
 
 function getBooks(){
   return $.get(`${SERVER_URL}/books`);
 }
 
 function cleanBookData(books){
+  console.log(books);
   let source = $('#book-template').html();
   let template = Handlebars.compile(source);
   let context = {books};
   let html = template(context);
   $('#book-append').html(html);
+  // console.log(books);
   return books;
 }
 
@@ -40,16 +57,25 @@ function updateBookButton(){
   });
 }
 
+function cleanBookDataWithQuery(books){
+  let source = $('#book-template').html();
+  let template = Handlebars.compile(source);
+  let context = {books};
+  let html = template(context);
+  $('#book-append').html(html);
+  // console.log(books);
+  // getAuthors(books)
+  // .then(addAuthors);
+}
 
-function checkQuery(){
-  if (!window.location.search){
-    getBooks()
-      .then(cleanBookData)
-      .then(deleteBook)
-      .then(updateBookButton)
-  } else {
-    let query = parseInt(window.location.search.substring(window.location.search.indexOf('=') +1,window.location.search.length));
-    return $.get(`${SERVER_URL}/books/${query}`)
-    .then(cleanBookData);
-  }
+function addAuthorLinks(){
+  $('.author-link').on('click',function(){
+    let id = $(this).data('id');
+    window.location.replace(`${CLIENT_URL}/authors.html?id=${id}`);
+  })
+}
+
+function getOneBook(){
+  let query = parseInt(window.location.search.substring(window.location.search.indexOf('=') +1,window.location.search.length));
+  return $.get(`${SERVER_URL}/books/${query}`)
 }

@@ -80,8 +80,10 @@
             <div class="row">
               <p class="book-card-title">{{'Book Title'}}</p>
             </div>
-            <div class="row">
-              <p class="book-card-author">{{'Book Author'}}</p>
+            <div class="row append-authors">
+
+                {{#each author}}<p class="author-link"data-id={{author_id}}>{{'First Name'}} {{'Last Name'}}</p>{{/each}}
+
             </div>
             <div class="row">
               <p class="book-card-genre">{{'Book Genre'}}</p>

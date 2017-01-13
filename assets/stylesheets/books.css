@@ -10,3 +10,9 @@
 .book-card-genre{
   font-style: italic;
 }
+
+.author-link{
+  text-decoration: underline;
+  cursor: pointer;
+  color:#337AB7;
+}
