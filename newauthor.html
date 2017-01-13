@@ -28,10 +28,6 @@
 
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="/">Home <span class="sr-only">(current)</span></a></li>
-              <li><a href="#">Link</a></li>
-            </ul>
           </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
       </nav>
@@ -41,7 +37,7 @@
         <div class="col-xs-2">
           <p>Author and Book Things go Here</p>
         </div>
-        <div id="append-author-form"class="col-xs-6">
+        <div id="append-author-form"class="col-xs-6 panel panel-default">
 
         </div>
 
@@ -76,21 +72,23 @@
               </div>
           </div>
           <div class="form-group row">
-              <label for="bio-input" class="col-xs-2 col-form-label">Biography</label>
-              <div class="col-xs-10">
-                  <input class="form-control" name="bio" type="text" id="bio-input" required {{#if 'First Name'}}value='{{'Biography'}}'{{/if}}>
-              </div>
+            <div class="form-group">
+              <label for="bio-input">Biography:</label>
+              <textarea class="form-control" name="bio" rows="5" id="bio-input" required>{{#if 'First Name'}}{{'Biography'}}{{/if}}</textarea>
+            </div>
           </div>
           <div class="form-group row">
             <label for="author-input">Books</label>
               <select multiple class="form-control" id="book-input"name="books" required>
               </select>
           </div>
+          <div class="row">
           {{#if 'First Name'}}
-          <button class="btn btn-primary" type="submit" name="button" id="update-author-button">Update</button>
+          <button class="btn btn-primary col-xs-4 col-xs-offset-4" type="submit" name="button" id="update-author-button">Update</button>
           {{else}}
-          <button class="btn btn-primary" type="submit" name="button" id="submit-author-button">Submit</button>
+          <button class="btn btn-primary col-xs-4 col-xs-offset-4" type="submit" name="button" id="submit-author-button">Submit</button>
           {{/if}}
+          </div>
       </form>
   </script>
 </html>

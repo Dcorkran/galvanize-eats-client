@@ -9,9 +9,11 @@ function postBook(){
     let bookData = $(this).serialize();
     return $.post(`${SERVER_URL}/books`,bookData)
       .then((data)=>{
-        console.log(data);
+        window.location.replace(`${CLIENT_URL}/books.html`);
       });
   });
+  getAuthors()
+    .then((addAuthorInput))
 }
 
 function getBookData(){
@@ -34,6 +36,7 @@ function addForm(){
 }
 
 function addFormWithData(bookData){
+  console.log('yoooo');
   let source = $('#form-template').html();
   let template = Handlebars.compile(source);
   let context = bookData[0];
@@ -44,6 +47,8 @@ function addFormWithData(bookData){
 
 function updateBook(id){
   //Needs to be updated to include authors
+  getAuthors()
+    .then((addAuthorInput))
   $('#add-book-form').on('submit',function(event){
     event.preventDefault();
     let bookData = $(this).serialize();
@@ -57,4 +62,16 @@ function updateBook(id){
       }
     });
   });
+}
+
+function getAuthors(){
+  return $.get(`${SERVER_URL}/authors`)
+}
+
+function addAuthorInput(authors){
+  console.log('yo',authors);
+  for (var i = 0; i < authors.length; i++) {
+    let $option = `<option>${authors[i]['First Name']} ${authors[i]['Last Name']}</option>`;
+    $('#author-input').append($option);
+  }
 }

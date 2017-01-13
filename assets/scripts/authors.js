@@ -9,13 +9,15 @@ function checkQuery(){
       .then(cleanAuthorData)
       .then(addDelete)
       .then(updateAuthorButton)
-      .then(addBookLinks);
+      .then(addBookLinks)
+      .then(viewAuthorButton);
   } else {
     getOneAuthor()
       .then(cleanAuthorData)
       .then(addDelete)
       .then(updateAuthorButton)
-      .then(addBookLinks);
+      .then(addBookLinks)
+      .then(viewAuthorButton);
   }
 }
 
@@ -65,4 +67,11 @@ function addBookLinks(){
     let id = $(this).data('id');
     window.location.replace(`${CLIENT_URL}/books.html?id=${id}`);
   })
+}
+
+function viewAuthorButton(){
+  $('.view-author-button').on('click',function(){
+    let id = $(this).data('id');
+    window.location.replace(`${CLIENT_URL}/authors.html?id=${id}`);
+  });
 }

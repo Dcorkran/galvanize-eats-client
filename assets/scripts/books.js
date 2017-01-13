@@ -8,13 +8,15 @@ function checkQuery(){
       .then(cleanBookData)
       .then(deleteBook)
       .then(updateBookButton)
-      .then(addAuthorLinks);
+      .then(addAuthorLinks)
+      .then(viewBookButton);
   } else {
     getOneBook()
       .then(cleanBookDataWithQuery)
       .then(deleteBook)
       .then(updateBookButton)
-      .then(addAuthorLinks);
+      .then(addAuthorLinks)
+      .then(viewBookButton);
   }
 }
 
@@ -78,4 +80,11 @@ function addAuthorLinks(){
 function getOneBook(){
   let query = parseInt(window.location.search.substring(window.location.search.indexOf('=') +1,window.location.search.length));
   return $.get(`${SERVER_URL}/books/${query}`)
+}
+
+function viewBookButton(){
+  $('.view-book-button').on('click',function(){
+    let id = $(this).data('id');
+    window.location.replace(`${CLIENT_URL}/books.html?id=${id}`);
+  });
 }
